@@ -24,6 +24,11 @@ public class Square {
         return type;
     }
 
+    public void reset () {
+        working = false;
+        explored = false;
+        solved = false;
+    }
 
     public String toString() {
         String toReturn;

@@ -96,14 +96,33 @@ public class Maze {
      * this is by giving each Square a reset() method too, and then just loop through
      * the squares and asking them to reset themselves.
      */
-    public void reset() {}
+    public void reset() {
+        for (int r = 0; r < this.rows; r++) {
+            for (int c = 0; c < this.cols; c++) {
+                this.maze[r][c].reset();
+            }
+        }
+    }
 
 
     /*
      * string representation of the maze 
+     * # = walls
+     * _ = open squares
+     * S = start
+     * E = finish
      */
     public String toString() {
-        return "";
+        String toReturn = "";
+
+        for (int r = 0; r < this.rows; r++) {
+            for (int c = 0; c < this.cols; c++) {
+                toReturn += this.maze[r][c].toString() + " ";
+            }
+            toReturn += "\n";
+        }  
+        
+        return toReturn;
     }
 
 }
