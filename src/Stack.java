@@ -79,10 +79,13 @@ public class Stack implements StackADT<Object>
     public int size(){
         Node check = first;
         int size = 0;
+        //System.out.println("Check: 1\n");
         while(check != null){
+            //System.out.println("Check: 2\n");
             size++;
-            check = first.next;
+            check = check.next;
         }
+        //System.out.println("Check: 3\n");
 
         return size;
     }
@@ -90,6 +93,28 @@ public class Stack implements StackADT<Object>
     public void clear(){
         first.data = null;
         first.next = null;
+        first = null;
+    }
+
+    public String toString(){
+        String data = "";
+        Node current = new Node();
+        current = first;
+
+        if(current == null)
+            return ("");
+        else{
+            data += current.data;
+            current = current.next;
+        }
+
+        while(current != null){
+            data += ", " + current.data;
+            current = current.next;
+        }
+        
+
+        return data;
     }
 
     static class Node
