@@ -19,24 +19,33 @@ public class Maze {
             
             this.rows = Integer.parseInt(s.next());
             this.cols = Integer.parseInt(s.next());
+            s.nextLine(); // consume the newline character
 
             this.maze = new Square[this.rows][this.cols];
 
+            System.out.println ("rows : " + this.rows + " cols: " + this.cols);
             for (int r = 0; r < this.rows; r++) {
                 String line = s.nextLine();
-                for (int c = 0; c < this.cols; c++) {
-                    int type = Integer.parseInt(line.substring(c, c+1));
-                    this.maze[r][c] = new Square(r, c, type);
-                    if (type == 2) {
-                        this.start = this.maze[r][c];
-                    } else if (type == 3) {
-                        this.finish = this.maze[r][c];
+                int mazec = 0;
+                for (int c = 0; c < line.length(); c++) {
+                    char ch = line.charAt(c);
+                    if (ch == ' ') {
+                        continue;
+                    } else {
+                        int type = Character.getNumericValue(ch);
+                        this.maze[r][mazec] = new Square(r, mazec, type);
+                        if (type == 2) {
+                            this.start = this.maze[r][mazec];
+                        } else if (type == 3) {
+                            this.finish = this.maze[r][mazec];
+                        }
+                        mazec++;
                     }
                 }
             }
 
             
-            return false;
+            return true;
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
             return false;
