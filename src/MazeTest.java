@@ -1,6 +1,6 @@
 import java.util.*;
-import java.io.File;
-import java.io.FileNotFoundException;
+//import java.io.File;
+//import java.io.FileNotFoundException;
 
 public class MazeTest{
     public static void main(String[] args){
@@ -9,6 +9,7 @@ public class MazeTest{
             ArrayList<Squares> holder = test.getNeighbors(test.getStart());
             System.out.println(test.getStart().getType());
             System.out.println(test.getFinish().getType());
+            System.out.println(holder);
             
             System.out.println(test);
             test.reset();
