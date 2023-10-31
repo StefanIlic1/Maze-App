@@ -9,19 +9,19 @@ public class QueueTest {
         System.out.println("Expected: Ob 1\n");
         //EVERYTHING BELOW IS FROM STACK
         System.out.println(test);
-        System.out.println("Expected: Ob 1\n");
+        System.out.println("Expected: Ob 2\n");
         
 
         test.enqueue("Ob 3");
         System.out.println(test);
-        System.out.println("Expected: Ob 3, Ob 1\n");
+        System.out.println("Expected: Ob 2, Ob 3\n");
         
         System.out.println(test.size());
         System.out.println("Expected: 2\n");
         test.enqueue("Ob 4");
 
         System.out.println(test.front());
-        System.out.println("Expected: Ob 4\n");
+        System.out.println("Expected: Ob 2\n");
 
         test.enqueue("Ob 5");
 

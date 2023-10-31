@@ -70,6 +70,8 @@ public class Queue implements QueueADT<Object>
     public int size(){
         int count = 0;
         Node current = head;
+        if(current.data == null)
+            return 0;
         while(current != null){
             current = current.next;
             count++;
@@ -86,6 +88,27 @@ public class Queue implements QueueADT<Object>
 
     public Object front(){
         return head.data;
+    }
+
+    public String toString(){
+        String data = "";
+        Node current = new Node();
+        current = head;
+
+        if(current == null)
+            return ("");
+        else{
+            data += current.data;
+            current = current.next;
+        }
+
+        while(current != null){
+            data += ", " + current.data;
+            current = current.next;
+        }
+        
+
+        return data;
     }
 
     class Node
