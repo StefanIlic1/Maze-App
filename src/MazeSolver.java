@@ -1,4 +1,7 @@
 public abstract class MazeSolver {
+    Maze maze;
+    boolean solved;
+    
     abstract void makeEmpty();
 
     abstract boolean isEmpty();
@@ -7,9 +10,11 @@ public abstract class MazeSolver {
 
     abstract Squares next();
 
-    MazeSolver(Maze maze) {}
+    MazeSolver(Maze maze) {
+        this.maze = maze;
+    }
 
-    boolean isSolved() { return false; }
+    boolean isSolved() { return solved; }
 
     String getPath() { return "Maze not solved"; }
 
