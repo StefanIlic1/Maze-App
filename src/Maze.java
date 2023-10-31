@@ -3,8 +3,8 @@ import java.util.*;
 
 
 public class Maze {
-    private Square[][] maze;
-    private Square start, finish;
+    private Squares[][] maze;
+    private Squares start, finish;
     private int rows, cols;
 
     public Maze() {}
@@ -21,7 +21,7 @@ public class Maze {
             this.cols = Integer.parseInt(s.next());
             s.nextLine(); // consume the newline character
 
-            this.maze = new Square[this.rows][this.cols];
+            this.maze = new Squares[this.rows][this.cols];
 
             System.out.println ("rows : " + this.rows + " cols: " + this.cols);
             for (int r = 0; r < this.rows; r++) {
@@ -33,7 +33,7 @@ public class Maze {
                         continue;
                     } else {
                         int type = Character.getNumericValue(ch);
-                        this.maze[r][mazec] = new Square(r, mazec, type);
+                        this.maze[r][mazec] = new Squares(r, mazec, type);
                         if (type == 2) {
                             this.start = this.maze[r][mazec];
                         } else if (type == 3) {
@@ -58,8 +58,8 @@ public class Maze {
      * and you should list them in that order. If the square is on a border, skip 
      * over directions that are out of bounds of the maze. Don't be adding in null values.
      */
-    public ArrayList<Square> getNeighbors(Square sq) {
-        ArrayList<Square> neighbors = new ArrayList<Square>();
+    public ArrayList<Squares> getNeighbors(Squares sq) {
+        ArrayList<Squares> neighbors = new ArrayList<Squares>();
 
         // north
         if (sq.getRow() > 0) {
@@ -87,7 +87,7 @@ public class Maze {
      * getter method for the remembered start square
      * @return the remembered start square
      */
-    public Square getStart() {
+    public Squares getStart() {
         return this.start;
     }
 
@@ -95,7 +95,7 @@ public class Maze {
      * getter method for the remembered finish square
      * @return the remembered finish square
      */
-    public Square getFinish() {
+    public Squares getFinish() {
         return this.finish;
     }
 
