@@ -6,8 +6,8 @@ public class QueueTest {
         System.out.println(test);
         System.out.println("Expected: Ob 1, Ob 2\n");
         System.out.println(test.dequeue());
-        System.out.println("Expected: Ob 2\n");
-        
+        System.out.println("Expected: Ob 1\n");
+        //EVERYTHING BELOW IS FROM STACK
         System.out.println(test);
         System.out.println("Expected: Ob 1\n");
         
