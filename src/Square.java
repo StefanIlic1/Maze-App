@@ -1,4 +1,5 @@
 public class Square {
+    //change 
     private int r;
     private int c;
     private int type;
