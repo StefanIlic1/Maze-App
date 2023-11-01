@@ -3,7 +3,7 @@
     The method moves the element at the tail of the queue
     to the head.
 */
-public class Queue implements QueueADT<Object>
+public class MyQueue implements QueueADT<Object>
 {
     private Node head;
     private Node tail;
@@ -11,7 +11,7 @@ public class Queue implements QueueADT<Object>
     /**
         Constructs an empty queue.
     */
-    public Queue()
+    public MyQueue()
     {
         head = null;
         tail = null;

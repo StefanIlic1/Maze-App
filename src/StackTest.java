@@ -1,6 +1,6 @@
 public class StackTest {
     public static void main(String[] args){
-        Stack test = new Stack();
+        MyStack test = new MyStack();
         test.push("Ob 1");
         test.push("Ob 2");
         System.out.println(test);

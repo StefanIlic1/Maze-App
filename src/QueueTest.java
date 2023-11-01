@@ -1,6 +1,6 @@
 public class QueueTest {
     public static void main(String[] args){
-        Queue test = new Queue();
+        MyQueue test = new MyQueue();
         test.enqueue("Ob 1");
         test.enqueue("Ob 2");
         System.out.println(test);
