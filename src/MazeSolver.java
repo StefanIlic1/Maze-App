@@ -36,6 +36,7 @@ public abstract class MazeSolver {
         return "No path found";
     }
 
+    // change
     void solve() {
         makeEmpty();
         // run step until you get to the exit square or the worklist is empty
