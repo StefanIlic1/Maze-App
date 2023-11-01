@@ -3,14 +3,14 @@ import java.util.NoSuchElementException;
 /**
  * An implementation of a stack as a sequence of nodes.
 */
-public class Stack implements StackADT<Object>
+public class MyStack implements StackADT<Object>
 {
     private Node first;
 
     /**
      * Constructs an empty stack.
     */
-    public Stack()
+    public MyStack()
     {
         first = null;
     }
