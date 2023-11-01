@@ -3,7 +3,7 @@
     The method moves the element at the tail of the queue
     to the head.
 */
-public class MyQueue implements QueueADT<Object>
+public class MyQueue implements QueueADT<Object>, Worklist<Object>
 {
     private Node head;
     private Node tail;

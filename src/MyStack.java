@@ -3,9 +3,9 @@ import java.util.NoSuchElementException;
 /**
  * An implementation of a stack as a sequence of nodes.
 */
-public class MyStack implements StackADT<Object>
+public class MyStack<T> implements StackADT<Object>, Worklist<T>
 {
-    private Node first;
+    private MyStack.Node<Object> first;
 
     /**
      * Constructs an empty stack.
@@ -21,7 +21,7 @@ public class MyStack implements StackADT<Object>
      * @param element the element to add
     */
     public void push(Object element) {
-        Node newNode = new Node();
+        Node<Object> newNode = new Node();
         newNode.data = element;
         newNode.next = first;
         this.first = newNode;
@@ -117,9 +117,9 @@ public class MyStack implements StackADT<Object>
         return data;
     }
 
-    static class Node
+    static class Node<T>
     {
-        public Object data;
+        public T data;
         public Node next;
     }
 }
