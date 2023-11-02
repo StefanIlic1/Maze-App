@@ -31,6 +31,18 @@ public class Squares {
         solved = false;
     }
 
+    public boolean explored() {
+        return explored;
+    }
+
+    public boolean working() {
+        return working;
+    }
+
+    public boolean solved() {
+        return solved;
+    }
+
     public String toString() {
         String toReturn;
         switch (this.type) {

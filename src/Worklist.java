@@ -3,4 +3,5 @@ public interface Worklist<T> {
     boolean isEmpty();
     int size();
     String toString();
+    
 }
