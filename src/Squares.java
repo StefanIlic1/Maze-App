@@ -1,5 +1,6 @@
 public class Squares {
     //change
+    Squares previous = null;
     private int r;
     private int c;
     private int type;
@@ -30,6 +31,8 @@ public class Squares {
         explored = false;
         solved = false;
     }
+
+    
 
     public String toString() {
         String toReturn;

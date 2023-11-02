@@ -3,7 +3,7 @@
     The method moves the element at the tail of the queue
     to the head.
 */
-public class MyQueue implements QueueADT<Object>, Worklist<Object>
+public class MyQueue<T> implements QueueADT<Squares>, Worklist<Squares>
 {
     private Node head;
     private Node tail;
@@ -30,7 +30,7 @@ public class MyQueue implements QueueADT<Object>, Worklist<Object>
         Adds an element to the tail of this queue.
         @param newElement the element to add
     */
-    public void enqueue(Object newElement)
+    public void enqueue(Squares newElement)
     {
         if (tail == null)    // head must also be null
         {
@@ -54,11 +54,11 @@ public class MyQueue implements QueueADT<Object>, Worklist<Object>
         Removes an element from the head of this queue.
         @return the removed element
     */
-    public Object dequeue()
+    public Squares dequeue()
     {
         if (head == null)
             return null;
-        Object element = head.data;
+        Squares element = head.data;
         head = head.next;
         if (head == null)    // queue is empty
         {
@@ -86,7 +86,7 @@ public class MyQueue implements QueueADT<Object>, Worklist<Object>
         tail.next = null;
     }
 
-    public Object front(){
+    public Squares front(){
         return head.data;
     }
 
@@ -113,7 +113,7 @@ public class MyQueue implements QueueADT<Object>, Worklist<Object>
 
     class Node
     {
-        public Object data;
+        public Squares data;
         public Node next;
     }
 }
