@@ -47,6 +47,7 @@ public class MazeSolverStack extends MazeSolver {
         
         ArrayList<Squares> neighbors = maze.getNeighbors(current);
         // for each thing in the arraylist if it is visited or if it is a wall
+        // write previous and check previous
         for (Squares s : neighbors) {
             if (!(s.getType()==1) && !(s.explored())) {
                 worklist.push(s);
