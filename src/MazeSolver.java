@@ -10,9 +10,25 @@ public abstract class MazeSolver {
 
     abstract void add(Squares sq);
 
-    abstract Squares next();
-
     abstract Squares remove();
+    
+    abstract Squares next();
+    
+    public Squares step(){
+        ArrayList<Squares> search;
+        search = maze.getNeighbors(next());
+        for(int i = search.size() - 1; i >= 0; i--){
+            if (search.get(i).previous == null){
+                search.remove(i);
+            }
+            else{
+                search.get(i).previous = next();
+                add(search.get(i));
+            }
+        }
+        
+        return remove();
+    }
 
     MazeSolver(Maze maze) {
         this.maze = maze;

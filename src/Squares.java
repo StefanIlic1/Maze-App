@@ -1,5 +1,6 @@
 public class Squares {
     //change
+    Squares previous = null;
     private int r;
     private int c;
     private int type;
