@@ -3,8 +3,7 @@ import java.util.NoSuchElementException;
 /**
  * An implementation of a stack as a sequence of nodes.
 */
-public class MyStack<T> implements StackADT<Object>, Worklist<Squares>
-{
+public class MyStack<T> extends Worklist<Squares> implements StackADT<Object> {
     private MyStack.Node<Object> first;
 
     /**

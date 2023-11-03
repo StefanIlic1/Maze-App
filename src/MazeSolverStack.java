@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 
 public class MazeSolverStack extends MazeSolver {
-    private MyStack<Squares> worklist;
 
     public MazeSolverStack(Maze maze) {
         super(maze);
-        // worklist = new MyStack<Squares>();
+        this.worklist = new MyStack<Squares>();
     }
 
     @Override

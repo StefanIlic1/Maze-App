@@ -3,7 +3,7 @@
     The method moves the element at the tail of the queue
     to the head.
 */
-public class MyQueue<T> implements QueueADT<Squares>, Worklist<Squares>
+public class MyQueue<T> extends Worklist<Squares> implements QueueADT<Squares>
 {
     private Node head;
     private Node tail;
@@ -30,6 +30,7 @@ public class MyQueue<T> implements QueueADT<Squares>, Worklist<Squares>
         Adds an element to the tail of this queue.
         @param newElement the element to add
     */
+    @Override
     public void enqueue(Squares newElement)
     {
         if (tail == null)    // head must also be null

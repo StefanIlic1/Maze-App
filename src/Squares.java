@@ -45,6 +45,18 @@ public class Squares {
         return solved;
     }
 
+    public void setWorking() {
+        working = true;
+    }
+
+    public void setExplored() {
+        explored = true;
+    }
+
+    public void setSolved() {
+        solved = true;
+    }
+
 
     public String toString() {
         String toReturn;

@@ -41,16 +41,22 @@ public abstract class MazeSolver {
 
     // change
     void solve() {
+        Squares sq = null;
         makeEmpty();
         // run step until you get to the exit square or the worklist is empty
         while (!isEmpty() || !isSolved()) {
-            Squares sq = step();
+            sq = step();
         }
+        sq.setSolved();
+        System.out.println(getPath());
+        
     }
 
     public Squares step(){
         ArrayList<Squares> search;
-        search = maze.getNeighbors(next());
+        Squares next = next();
+        next.setWorking();
+        search = maze.getNeighbors(next);
         for(int i = search.size() - 1; i >= 0; i--){
             if (search.get(i).previous == null){
                 search.remove(i);
@@ -61,6 +67,8 @@ public abstract class MazeSolver {
             }
         }
        
-        return remove();
+        Squares removed = remove();
+        removed.setExplored();
+        return removed;
     }
 }
