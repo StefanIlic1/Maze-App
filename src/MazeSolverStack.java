@@ -28,6 +28,11 @@ public class MazeSolverStack extends MazeSolver {
         return (Squares) worklist.top();
     }
 
+    public Squares remove() {
+        return (Squares) worklist.pop();
+    }
+
+    /*
     @Override
     public Squares step() {
         if (worklist == null) {
@@ -56,6 +61,7 @@ public class MazeSolverStack extends MazeSolver {
         
         return null;
     }
+    */
 
     
 }
