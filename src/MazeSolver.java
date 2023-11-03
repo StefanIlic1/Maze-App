@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class MazeSolver {
     Maze maze;
     Worklist<Squares> worklist;
@@ -10,7 +12,7 @@ public abstract class MazeSolver {
 
     abstract Squares next();
 
-    abstract Squares step();
+    abstract Squares remove();
 
     MazeSolver(Maze maze) {
         this.maze = maze;
@@ -43,5 +45,21 @@ public abstract class MazeSolver {
         while (!isEmpty() || !isSolved()) {
             Squares sq = step();
         }
+    }
+
+    public Squares step(){
+        ArrayList<Squares> search;
+        search = maze.getNeighbors(next());
+        for(int i = search.size() - 1; i >= 0; i--){
+            if (search.get(i).previous == null){
+                search.remove(i);
+            }
+            else{
+                search.get(i).previous = next();
+                add(search.get(i));
+            }
+        }
+       
+        return remove();
     }
 }

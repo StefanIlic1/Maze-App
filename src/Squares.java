@@ -6,11 +6,13 @@ public class Squares {
     boolean working;
     boolean explored;
     boolean solved;
+    Squares previous;
 
     public Squares (int r, int c, int type) {
         this.r = r;
         this.c = c;
         this.type = type;
+        this.previous = null;
     }
 
     public int getRow() {
@@ -30,6 +32,19 @@ public class Squares {
         explored = false;
         solved = false;
     }
+
+    public boolean explored() {
+        return explored;
+    }
+
+    public boolean working() {
+        return working;
+    }
+
+    public boolean solved() {
+        return solved;
+    }
+
 
     public String toString() {
         String toReturn;
