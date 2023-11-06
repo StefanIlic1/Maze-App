@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public abstract class MazeSolver {
     Maze maze;
     Squares current;
+    boolean stepOne = true;
     //Worklist<Squares> worklist;
     // having a worklist is actually unnecessary
     
@@ -60,7 +61,7 @@ public abstract class MazeSolver {
         return finalpath;
     }
 
-    // change
+   
     void solve() {
         while(!this.isSolved()) {
             this.step();
@@ -75,22 +76,53 @@ public abstract class MazeSolver {
     }
 
     public Squares step(){
+        ///*
+        
+        if (this.isEmpty() && this.stepOne){
+            add(current);
+            current.previous = new Squares(1000, 1000, 0);
+            stepOne = false;
+        }
         ArrayList<Squares> search;
         Squares next = next();
         next.setWorking();
         search = maze.getNeighbors(next);
+    
+        for (int i = search.size() - 1; i >= 0; i--) {
+            Squares temp = search.get(i);
+            System.out.println(i + ": " + temp.getRow()+ ", " + temp.getColumn());
+        }
+
+        for (int i = search.size() - 1; i >= 0; i--) {
+            if (search.get(i).getType() == 1) {
+                Squares temp = search.remove(i);
+                System.out.println("REMOVED BY TYPE: " + temp.getRow()+ ", " + temp.getColumn() + " TYPE: " + temp.getType());
+            }
+        }
+
+        Squares removed = remove();
+        removed.setExplored();
+        
+
         for(int i = search.size() - 1; i >= 0; i--){
-            if (search.get(i).previous == null){
-                search.remove(i);
+            if (!(search.get(i).previous == null)){
+                Squares temp = search.remove(i);
+                System.out.println("REMOVED BY PREV: " + temp.getRow()+ ", " + temp.getColumn());
             }
             else{
-                search.get(i).previous = next();
+                search.get(i).previous = removed;
+                Squares temp = search.get(i);
+                System.out.println("CAN SEARCH: " + temp.getRow()+ ", " + temp.getColumn());
+                
                 add(search.get(i));
             }
         }
        
-        Squares removed = remove();
-        removed.setExplored();
+        System.out.println("SEARCHED: "+removed.getRow()+", "+removed.getColumn());
+        this.current = removed;
         return removed;
+        //*/
+
+
     }
 }
