@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class MazeSolverStack extends MazeSolver {
 
+    MyStack<Squares> worklist;
+
     public MazeSolverStack(Maze maze) {
         super(maze);
         this.worklist = new MyStack<Squares>();
@@ -30,37 +32,6 @@ public class MazeSolverStack extends MazeSolver {
     public Squares remove() {
         return (Squares) worklist.pop();
     }
-
-    /*
-    @Override
-    public Squares step() {
-        if (worklist == null) {
-            worklist = new MyStack<Squares>();
-            worklist.push(maze.getStart());
-        }
-
-        if (worklist.isEmpty()) {
-            return null;
-        }
-
-        Squares current = (Squares) worklist.top();
-
-        if (current == maze.getFinish()) {
-            return (Squares) worklist.top();
-        }
-        
-        ArrayList<Squares> neighbors = maze.getNeighbors(current);
-        // for each thing in the arraylist if it is visited or if it is a wall
-        // write previous and check previous
-        for (Squares s : neighbors) {
-            if (!(s.getType()==1) && !(s.explored())) {
-                worklist.push(s);
-            }
-        }
-        
-        return null;
-    }
-    */
 
     
 }

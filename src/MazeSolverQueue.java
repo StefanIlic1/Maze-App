@@ -1,7 +1,7 @@
 //import java.util.ArrayList;
 
 public class MazeSolverQueue extends MazeSolver {
-    Worklist<Squares> worklist;
+    MyQueue<Squares> worklist;
     
     public MazeSolverQueue(Maze maze){
         super(maze);
