@@ -38,18 +38,18 @@ public class Squares {
     }
 
     public boolean working() {
-        return working;
+        return this.working;
     }
 
     public boolean solved() {
         return solved;
     }
 
-    public void setWorking() {
+    public void startWorking() {
         working = true;
     }
 
-    public void setExplored() {
+    public void explore() {
         explored = true;
     }
 
@@ -59,6 +59,10 @@ public class Squares {
 
     public Squares getPrev() {
         return this.previous;
+    }
+
+    public void setPrev(Squares other) {
+        this.previous = other;
     }
 
 

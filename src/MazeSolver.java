@@ -13,7 +13,7 @@ public abstract class MazeSolver {
 
     abstract void add(Squares sq);
 
-    abstract Squares remove();
+    //abstract Squares remove();
 
     abstract Squares next();
     
@@ -76,7 +76,47 @@ public abstract class MazeSolver {
     }
 
     public Squares step(){
-        ///*
+        // if it is at the start, and if it is not currently being worked on already
+        if (!current.working() && current.getType()==2) {
+            add(current);
+            current.startWorking();
+        }
+
+        if (this.isEmpty()) {
+            return null;
+        }
+
+        current = next();
+
+        // if it is the last square, return the last square
+        // if not, continue algorithm
+        if (current.getType() == 3) {
+            return current;
+        } else {
+            current.explore();
+
+            ArrayList<Squares> neighbors = maze.getNeighbors(current);
+
+            for (int i = 0; i < neighbors.size(); i++) {
+                Squares work = neighbors.get(i);
+                if (work.getType() == 0 && !work.working()) {
+                    work.setPrev(current);
+                    work.startWorking();
+                    add(work);
+                } else if (work.getType() == 3) {
+                    // reached the end
+                    work.setPrev(current);
+                    current = work;
+                    return current;
+                    //return work;
+                }
+            }
+
+            return current;
+        }
+
+        
+        /*
         
         if (this.isEmpty() && this.stepOne){
             add(current);
@@ -121,7 +161,7 @@ public abstract class MazeSolver {
         System.out.println("SEARCHED: "+removed.getRow()+", "+removed.getColumn());
         this.current = removed;
         return removed;
-        //*/
+        */
 
 
     }

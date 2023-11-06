@@ -26,12 +26,16 @@ public class MazeSolverStack extends MazeSolver {
 
     @Override
     public Squares next() {
-        return (Squares) worklist.top();
+        //return (Squares) worklist.top();
+        return (Squares) worklist.pop();
     }
 
+    /* 
+    @Override
     public Squares remove() {
         return (Squares) worklist.pop();
     }
+    */
 
     
 }
