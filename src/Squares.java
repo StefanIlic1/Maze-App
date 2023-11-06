@@ -57,6 +57,10 @@ public class Squares {
         solved = true;
     }
 
+    public Squares getPrev() {
+        return this.previous;
+    }
+
 
     public String toString() {
         String toReturn;

@@ -2,7 +2,9 @@ import java.util.ArrayList;
 
 public abstract class MazeSolver {
     Maze maze;
-    Worklist<Squares> worklist;
+    Squares current;
+    //Worklist<Squares> worklist;
+    // having a worklist is actually unnecessary
     
     abstract void makeEmpty();
 
@@ -17,39 +19,59 @@ public abstract class MazeSolver {
 
     MazeSolver(Maze maze) {
         this.maze = maze;
+        this.current = this.maze.getStart();
     }
 
     boolean isSolved() {
         // return true if there is a path from the start to the exit found
         // look at the worklist path to see if it is solved
-
-        if (!worklist.isEmpty()) {
-            if (worklist.toString().contains("3")) {
-                return true;
-            }
+        if (current.getType() == 3) {
+            return true;
         }
+
         return false;
     }
 
+    /*
+     * will be a string representation of the path for the solution
+     * this will be created with a stack, as it is not contributing
+     * to the solving of the problem.
+     */
     String getPath() {
-        if (isSolved()) {
-            return worklist.toString();
-        }
+        // the current square should be the last square because you get path after the maze is solved
+        MyStack<String> path = new MyStack<String>();
         
-        return "No path found";
+        if (this.current.getType() == 3) {
+            path.push("[" + this.current.getRow() + "," + this.current.getColumn() + "]");
+            while (this.current.getType() != 2) {
+                this.current = this.current.getPrev();
+                path.push("[" + this.current.getRow() + "," + this.current.getColumn() + "]");
+            }
+        } else {
+            return "NO SOLUTION";
+        }
+
+        String finalpath = "";
+        while (!path.isEmpty()) {
+            finalpath += (path.pop() + " , ");
+        }
+        // eliminates the final comma
+        finalpath = finalpath.substring(0,finalpath.length()-1);
+        return finalpath;
     }
 
     // change
     void solve() {
-        Squares sq = null;
-        makeEmpty();
-        // run step until you get to the exit square or the worklist is empty
-        while (!isEmpty() || !isSolved()) {
-            sq = step();
+        while(!this.isSolved()) {
+            this.step();
         }
-        sq.setSolved();
-        System.out.println(getPath());
-        
+        if(this.current.getType() == 3)
+        {
+            System.out.print(this.getPath());
+        }
+        else if(this.isEmpty()){
+            System.out.print("NO SOLUTION");
+        }
     }
 
     public Squares step(){
