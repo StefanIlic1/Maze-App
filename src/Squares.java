@@ -87,9 +87,11 @@ public class Squares {
 
         if (working) {
             toReturn = "o";
-        } else if (explored) {
+        }
+        if (explored) {
             toReturn = ".";
-        } else if (solved) {
+        }
+        if (solved) {
             toReturn = "x";
         }
 

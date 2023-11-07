@@ -91,13 +91,14 @@ public abstract class MazeSolver {
         // if it is the last square, return the last square
         // if not, continue algorithm
         if (current.getType() == 3) {
+            current.setSolved();
             return current;
         } else {
             current.explore();
 
             ArrayList<Squares> neighbors = maze.getNeighbors(current);
 
-            for (int i = 0; i < neighbors.size(); i++) {
+            for (int i = neighbors.size() - 1; i >= 0; i--) {
                 Squares work = neighbors.get(i);
                 if (work.getType() == 0 && !work.working()) {
                     work.setPrev(current);
