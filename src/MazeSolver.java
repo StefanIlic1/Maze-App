@@ -27,6 +27,7 @@ public abstract class MazeSolver {
         // return true if there is a path from the start to the exit found
         // look at the worklist path to see if it is solved
         if (current.getType() == 3) {
+            current.setSolved();
             return true;
         }
 
@@ -92,6 +93,7 @@ public abstract class MazeSolver {
         // if not, continue algorithm
         if (current.getType() == 3) {
             current.setSolved();
+            //System.out.println("running");
             return current;
         } else {
             current.explore();
@@ -115,55 +117,5 @@ public abstract class MazeSolver {
 
             return current;
         }
-
-        
-        /*
-        
-        if (this.isEmpty() && this.stepOne){
-            add(current);
-            current.previous = new Squares(1000, 1000, 0);
-            stepOne = false;
-        }
-        ArrayList<Squares> search;
-        Squares next = next();
-        next.setWorking();
-        search = maze.getNeighbors(next);
-    
-        for (int i = search.size() - 1; i >= 0; i--) {
-            Squares temp = search.get(i);
-            System.out.println(i + ": " + temp.getRow()+ ", " + temp.getColumn());
-        }
-
-        for (int i = search.size() - 1; i >= 0; i--) {
-            if (search.get(i).getType() == 1) {
-                Squares temp = search.remove(i);
-                System.out.println("REMOVED BY TYPE: " + temp.getRow()+ ", " + temp.getColumn() + " TYPE: " + temp.getType());
-            }
-        }
-
-        Squares removed = remove();
-        removed.setExplored();
-        
-
-        for(int i = search.size() - 1; i >= 0; i--){
-            if (!(search.get(i).previous == null)){
-                Squares temp = search.remove(i);
-                System.out.println("REMOVED BY PREV: " + temp.getRow()+ ", " + temp.getColumn());
-            }
-            else{
-                search.get(i).previous = removed;
-                Squares temp = search.get(i);
-                System.out.println("CAN SEARCH: " + temp.getRow()+ ", " + temp.getColumn());
-                
-                add(search.get(i));
-            }
-        }
-       
-        System.out.println("SEARCHED: "+removed.getRow()+", "+removed.getColumn());
-        this.current = removed;
-        return removed;
-        */
-
-
     }
 }
