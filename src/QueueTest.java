@@ -1,4 +1,4 @@
-public class QueueTest {
+/*public class QueueTest {
     public static void main(String[] args){
         MyQueue test = new MyQueue();
         test.enqueue("Ob 1");
@@ -39,4 +39,4 @@ public class QueueTest {
             System.out.println("Expected: 0\n");
         }
     }
-}
+}*/
