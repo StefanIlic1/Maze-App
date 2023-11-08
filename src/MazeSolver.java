@@ -47,6 +47,7 @@ public abstract class MazeSolver {
             path.push("[" + this.current.getRow() + "," + this.current.getColumn() + "]");
             while (this.current.getType() != 2) {
                 this.current = this.current.getPrev();
+                this.current.setSolved();
                 path.push("[" + this.current.getRow() + "," + this.current.getColumn() + "]");
             }
         } else {
