@@ -9,6 +9,16 @@ public class Maze {
 
     public Maze() {}
 
+    public void setSolved() {
+        for (int r = 0; r < this.rows; r++) {
+            for (int c = 0; c < this.cols; c++) {
+                if (maze[r][c].explored()) {
+                    maze[r][c].setSolved();
+                }
+            }
+        }
+    }
+    
     /*
      * Loads a maze from a file. Returns true if successful, false if not.
      * @param fname The name of the file to load the maze from.

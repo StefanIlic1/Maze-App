@@ -383,6 +383,11 @@ public class MazeApp extends JFrame implements ActionListener {
     private void updateMaze() {
 	if (mazeLoaded) {  // leave blank until first maze is loaded
 	    
+		if (solver.isSolved()) {
+			maze.setSolved();
+		}
+		
+
 	    // update the maze
 	    mazeDisplay.setText(maze.toString());
 
